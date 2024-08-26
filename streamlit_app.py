@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import joblib
+from sklearn.preprocessing import StandardScaler
 
 # Load the trained model
 model = joblib.load('diabetes_model.pkl')
@@ -32,8 +33,9 @@ if st.button("Predict"):
     # Collect user input into a numpy array
     user_input = np.array([[pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, diabetes_pedigree_function, age]])
 
-    # Scale the input data
-    user_input_scaled = scaler.transform(user_input)
+    # Scale the input data using StandardScaler
+    scaler = StandardScaler()
+    user_input_scaled = scaler.fit_transform(user_input)
 
     # Make a prediction
     prediction = model.predict(user_input_scaled)
