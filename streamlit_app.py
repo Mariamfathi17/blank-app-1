@@ -4,7 +4,6 @@ import joblib
 
 # Load the trained model
 model = joblib.load('diabetes_model.pkl')
-scaler = joblib.load('scaler.pkl')  # Assuming you saved the scaler
 
 # Set up the Streamlit app
 st.set_page_config(page_title="Diabetes Prediction App", layout="centered")
